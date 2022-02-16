@@ -1,0 +1,21 @@
+list_open=['{','[','(']
+list_close=['}',']',')']
+#Defineing function: assumption: defined lists have corresponding elements in same index
+def isvalid (x):
+    stack=[] #initiation stacking element
+    for i in range (len(x)): # i=number of elements
+        if x[i] in list_open: #if ith element is in the open bracket list
+            stack.append(x[i]) #then it is added to stack
+        elif x[i] in list_close: #if the ith element is in the close bracket list
+            p=list_close.index(x[i]) #index of element is saved for next line
+            if len(stack)>0 and (list_open[p]==stack[len(stack)-1]): #stack has to be nonzero,
+            # condition met? pop the pair 
+                stack.pop()# if popping is successful and no elements remain, it is valid
+            else:
+                y='invaid' #otherwise, not valid
+    if len(stack)==0:
+        y='vaid' #at stack length 0, x is balanced
+    else:
+        y='invalid'
+    return (y)
+ 
