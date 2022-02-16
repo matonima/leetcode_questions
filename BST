@@ -1,0 +1,122 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Feb 12 19:41:37 2022
+
+@author: tonim
+"""
+
+#import math
+class Node:#user does not touch this class, only used by the binary_search_tree class
+    def __init__(self,X):
+        self.value=X
+        self.parent=None #instantiate for parent 
+        self.leftchild=None
+        self.rightchild=None
+
+        
+class binary_search_tree(): #class that user deals with
+    def __init__(self):
+        self.root=None
+            
+   #assignment of value
+    def treeassign(self,X1):
+        if self.root==None:
+            self.root=Node(X1)
+        else:
+            self._insert(X1,self.root)
+            
+    def _insert(self,value, current_node):#private insert function, due to it bein recurrent
+        if current_node.value>value:
+            if current_node.leftchild==None:
+                current_node.leftchild=Node(value)
+                current_node.leftchild.parent=current_node #set as parent 
+            else:
+                self._insert(value,current_node.leftchild)# this is where the private self function becomes recurrent
+        elif current_node.value<value:
+            if current_node.rightchild==None:
+                current_node.rightchild=Node(value)
+                current_node.rightchild.parent=current_node
+            else:
+                self._insert(value,current_node.rightchild)# this is where the private self function becomes recurrent
+        else:
+            print("value already in tree")
+            
+    #print function
+    def printtree(self):
+        if self.root!=None:
+            self._printtree(self.root)
+    def _printtree(self,current_node):
+        if current_node!=None:
+            self._printtree(current_node.leftchild)
+            #print("current node is",str(current_node.value))
+            self._printtree(current_node.rightchild)
+        
+    #height function
+    def height(self): #function returns max height of tree
+        if self.root!=None:
+            return self._height(self.root, 0) #invokes private function
+        else:
+            return 0
+    def _height(self, current_node, current_height): #private function, can be recursive
+        if current_node==None:
+            return current_height
+        left_height=self._height(current_node.leftchild,current_height+1)
+        right_height=self._height(current_node.rightchild,current_height+1)
+        maxh=max(left_height,right_height)
+        return(maxh)
+    #width function
+    def getmaxwidth(self,maxh):
+        if self.root!=None:
+            for i in range(1,maxh+1):
+                maxw=self._width(self.root,i)
+                return(maxw)
+        else:
+            return 0
+            
+    def _width(self,current_node, level):#private funtion
+        if current_node!=None:
+            if level==1:
+                return 1
+            elif level>1:
+                leftwidth=self._width(current_node.leftchild,level+1)
+                rightwidth=self._width(current_node.rightchild,level+1)
+                maxw=leftwidth+rightwidth
+        return maxw
+    #check value within limit k1, k2
+    def checkval(self,limit1,limit2):#checking value of node between limit 1 and 2 
+        if self.root!=None:
+            return self._checkval(self.root,limit1,limit2)
+        else:
+            return("value is None")
+    def _checkval(self, current_node, limit1, limit2):
+        if current_node.value==limit1 or current_node.value==limit2:
+            y= current_node.value
+        elif current_node.value>limit1: 
+            if current_node.value<limit2:
+                y= current_node.value
+            else:      
+                y="not within limits"
+                print("current node", current_node.value)
+        elif current_node.value<limit2:
+            if current_node.value<limit1:
+                print("current node", current_node.value)
+                y="not within limits"
+            
+            return(y)
+
+def myinput1(tree,num_elem=100,max_int=1000):
+    from random import randint
+    for _ in range(num_elem):
+        cur_elem=randint(0,max_int)
+        tree.treeassign(cur_elem)
+    return tree
+tree=binary_search_tree()
+tree=myinput1(tree)
+tree.printtree()
+limit1=400
+limit2=500
+#y1=treecheck(myinput1,limit1,limit2)
+#print(tree.checkval(limit1,limit2))
+print(tree.checkval(limit1,limit2))
+h=(tree.height())
+print(tree.getmaxwidth(h))
