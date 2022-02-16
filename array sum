@@ -1,0 +1,27 @@
+import math
+
+def checksum(a,b,c):
+    s=a+b+c
+    if s==0:
+       y=1
+    else:
+       y=0
+    return (y)
+def sumzero(X):
+    w1=[]
+    w=[]
+    l1=[]
+    l2=[]
+    l3=[]
+    n=len(X)
+    for i in range(n):       
+       for j in range(n):
+           for k in range(n): 
+               if checksum(X[i],X[j],X[k])==1:
+                   l1.append(X[i])
+                   l2.append(X[j])
+                   l3.append(X[k])
+                   #print(l1,l2,l3)
+    w=list(zip(l1,l2,l3))#zip takes 3 lists and makes them into vectors of 3 elements, then list makes it into a list
+    print(w)                   
+    return (w)
