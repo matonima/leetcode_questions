@@ -1,0 +1,33 @@
+import math
+
+def isanagram(x1,x2):
+    ana=0
+    if len(x2)==len(x1):
+        x11=sorted(x1)
+        x22=sorted(x2)
+        if x11==x22:
+            ana=1
+        else:
+            ana=0
+    return (ana)
+
+
+def groupanagram(X):
+    W=[]
+    W_tuple=[]
+    b=len(X)
+    for i in range(b):
+       # w1=X[i]
+        for j in range(b):
+            #w2=X[j]
+            #print(j,w1,w2)
+            if X[i]==X[j] or X[i] in W_tuple :
+                continue 
+            elif isanagram(X[i],X[j])==1:
+                W=list((X[i],X[j]))
+                #print(W) 
+                W_tuple.append([x for x in zip(*[iter(W)]*2)]  )
+                #print(W_tuple)
+            else:
+                continue               
+    return(W_tuple)
