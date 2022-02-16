@@ -1,0 +1,15 @@
+import math
+def per(a):
+    pc=[]
+    combinations={}
+    n=len(a)
+    for i in range(n):
+        for c in range(n-1):
+            pc=len(a*i)#n!/(n-r)!
+            combinations[i]=a[i],a[i-c],a[i-c-1] #a[i+c]
+        print("i=",i,"c=",c,"combination=",combinations)
+    return(pc)#,"combinations",combinations)
+#drive
+a=[1,2,3]
+#per(a)
+print("input number=",a," & possible combinations=",per(a))
