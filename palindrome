@@ -1,0 +1,33 @@
+#palindrome
+import math
+def ispalindrome(x,a):
+    if a==0:
+        if x==x[::-1]:#stringObject[ start : stop : interval] it selects a range from start to stop-1 with given step size
+            p=1
+        else:
+            p=0
+    else:
+        x1=x[0:a:]+x[a+1::]#removes ith character from string, similar to pop function for lists
+        
+        if x1==x1[::-1]:
+            p=1
+            print("input with removed element=",x1)
+        else:
+            p=0
+    return (p)
+def ispossible(y):
+    n=len(y)
+    if ispalindrome(y,0)==1:
+        print("already palindrome")
+    else:
+        i=0
+        for i in range(n):
+            #print("i=",i)
+            if ispalindrome(y,i)==1:
+                print("yes, by removing one element") 
+                i+=1
+            elif ispalindrome(y,i)==0:
+                print("NO")
+#drivercode
+W='abahba'
+ispossible(W)
