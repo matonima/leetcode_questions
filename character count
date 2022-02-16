@@ -1,0 +1,15 @@
+def stcheck(s,t):
+    n=len(s)
+    m=len(t)
+    dicti=[]
+    for i in range(n):
+        for j in range(m):
+            if t[j] in (s[i]):
+                dicti=(len(t))
+                #print(dicti)
+            else:
+                dicti=dicti
+    return dicti
+s1="hellobgb"
+t1="ob"
+print(stcheck(s1,t1))
