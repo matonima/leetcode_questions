@@ -1,0 +1,35 @@
+
+def formsubarray(value,subarray):
+if value not in subarray:
+  subarray.append(value)
+elif value in subarray:
+  print ("input value=", value, "is already part of subarray")
+return subarray
+      # make subarray from x to nth array value
+def callmax(array):
+ m=max(array)
+print(m)
+return m
+def maxprofit(prices):
+ n=len(prices)
+ y=[]
+ minp=min(prices)
+for i in range(n):
+  if prices[i]==minp:
+   min_idx=prices.index(minp)
+   print("min_idx =", min_idx, "min value=", minp)
+   y=(prices[min_idx:n])
+  # y=list(formsubarray(prices[min_idx:n],y))
+   #print("y=",y)
+   maxp=callmax(y)
+   max_idx=prices.index(maxp)
+   print("max_idx =", max_idx, "max value=", maxp)
+  else:
+   continue
+  maxpro=maxp-minp  
+  print("profit is", maxpro)
+  
+return maxpro
+
+X=[11,2,3,4,5,6,7]
+q=maxprofit(X)
