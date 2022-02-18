@@ -1,0 +1,60 @@
+#Best Time to Buy and Sell Stock
+def checks(s,p):
+  if len(s)==1:
+    if dot_in_p(p)=="true":
+      y="true"
+    elif s_in_p(s,p)=="true":
+      y="true"
+    else:
+      y="false"
+  if len(s)>1:
+    if star_in_p(p)=="true":
+     if dot_in_p(p)=="true" and s_in_p(s,p)=="false":
+      y="true"
+     elif dot_in_p(p)=="false" and s_in_p(s,p)=="true":
+      y="true"
+     else:
+      y="false"
+    else:#star_in_p(p)=="false":
+     y="false"
+  return y
+def star_in_p(p):
+  if len(p)>0:
+    for i in range(len(p)):
+     if "*" in p[i]:
+      Ans="true"  
+      print ("* at index", i)
+     else:
+      Ans="false"
+      print("no * in pattern at index", i)
+  return Ans
+def dot_in_p(p):
+  if "." in p:
+    Ans="true"
+  else:
+    Ans="false"
+    print("no . in pattern")
+  return Ans
+def s_in_p(s,p):
+  #print(len(s))
+  if len(s)==1:
+    if s in p:
+     Ans="true"
+    else:
+     Ans="false"
+     #print ("string not found in pattern")
+  else:
+    for i in range(len(s)):
+     for j in range(len(p)):
+      if s[i]==p[j]:
+        #print (s[i], p[j])
+       #print ("string at index", i, "=", s[i])
+       #print ("pattern at index", j, "is",p[j])
+         Ans="true"
+        #print(Ans)
+  return Ans
+
+#drivecode
+S="aa"
+P="a*"
+print(checks(S,P))
