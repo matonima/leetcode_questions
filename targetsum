@@ -1,0 +1,20 @@
+def findTargetSumWays(x, ts):
+    n = len(x)
+    print("n=",n)
+    C = []
+    count=0
+    for i in range(n):
+        total=sum(x)-2*(x[i])
+        print("sum is =",total)
+        if (total)==ts:
+            for j in range(i,n):
+                count=count+int(x[i]*(-1)**(j))
+                print("count at",j,"-th index count is",count)                
+    print("count=",count)
+    return count
+
+
+
+x=[1,1,1,1,1]
+ts=3
+y=findTargetSumWays(x,ts)
