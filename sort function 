@@ -1,0 +1,138 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/matonima/leetcode_questions/blob/main/sort%20function%20\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "import math\n",
+        "def move_zeros_to_left(A):\n",
+        "  if len(A) < 1:\n",
+        "    return\n",
+        "\n",
+        "  else:\n",
+        "    Y=sortmyfunc(A)\n",
+        "  return Y\n",
+        "\n",
+        "def sortmyfunc(A):\n",
+        "   n=len(A)\n",
+        "   B=[]\n",
+        "   for i in range(n): \n",
+        "     #if A[i]==min(A):\n",
+        "       x=A[i]\n",
+        "       j=i-1\n",
+        "       print(x,i,j)\n",
+        "       while j>=0 and x<=j:\n",
+        "           print(\"A=\",A[j], \" at index,\",j)\n",
+        "           New_sub=A[j+1]\n",
+        "           New_add=A[j]\n",
+        "           #print(New_add,New_sub)\n",
+        "           A[j]=New_sub \n",
+        "           A[j+1]=New_add \n",
+        "           j=j-1\n",
+        "           print(\"j=\",j)\n",
+        "       x=j+1\n",
+        "           #print(\"A[j+1]=\", A[j+1], \" at j+1=\", j+1 )\n",
+        "   return A\n",
+        "          \n",
+        "\n",
+        "     \n",
+        "\n",
+        "    \n",
+        "v = [1, 10, 20, 0, 59, 63, 0, 88, 0]\n",
+        "print(\"Original Array:\", v)\n",
+        "\n",
+        "move_zeros_to_left(v)\n",
+        "\n",
+        "print(\"After Moving Zeroes to Left: \", v)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "SX8f7zXO27CU",
+        "outputId": "b59039a4-bfcf-434a-9bcb-152ca49009e3"
+      },
+      "execution_count": 46,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Original Array: [1, 10, 20, 0, 59, 63, 0, 88, 0]\n",
+            "1 0 -1\n",
+            "10 1 0\n",
+            "20 2 1\n",
+            "0 3 2\n",
+            "A= 20  at index, 2\n",
+            "j= 1\n",
+            "A= 10  at index, 1\n",
+            "j= 0\n",
+            "A= 1  at index, 0\n",
+            "j= -1\n",
+            "59 4 3\n",
+            "63 5 4\n",
+            "0 6 5\n",
+            "A= 63  at index, 5\n",
+            "j= 4\n",
+            "A= 59  at index, 4\n",
+            "j= 3\n",
+            "A= 20  at index, 3\n",
+            "j= 2\n",
+            "A= 10  at index, 2\n",
+            "j= 1\n",
+            "A= 1  at index, 1\n",
+            "j= 0\n",
+            "A= 0  at index, 0\n",
+            "j= -1\n",
+            "88 7 6\n",
+            "0 8 7\n",
+            "A= 88  at index, 7\n",
+            "j= 6\n",
+            "A= 63  at index, 6\n",
+            "j= 5\n",
+            "A= 59  at index, 5\n",
+            "j= 4\n",
+            "A= 20  at index, 4\n",
+            "j= 3\n",
+            "A= 10  at index, 3\n",
+            "j= 2\n",
+            "A= 1  at index, 2\n",
+            "j= 1\n",
+            "A= 0  at index, 1\n",
+            "j= 0\n",
+            "A= 0  at index, 0\n",
+            "j= -1\n",
+            "After Moving Zeroes to Left:  [0, 0, 0, 1, 10, 20, 59, 63, 88]\n"
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "colab": {
+      "name": "Untitled1.ipynb",
+      "provenance": [],
+      "authorship_tag": "ABX9TyM8NEsuAisXGCouYxTtZqNr",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "display_name": "Python 3",
+      "name": "python3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
