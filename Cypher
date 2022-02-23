@@ -1,0 +1,42 @@
+import math
+
+def msort(s):
+    n=len(s)
+    s=list(s)#changing string to list for ease in functionality
+    new_s=[]#initializing output assigment list
+    #print(s,new_s)
+    for i in range(n):
+        if n<3:
+            new_s.append(s[i])
+           # print (new_s)
+        else:
+            midpoint=math.ceil(n/2)
+           # print(s[midpoint])
+            new_s.append(s[midpoint-1])
+            news1=s[0:midpoint-1]
+            news2=s[midpoint:n]
+            #print(news1,news2,new_s)
+            new_s.append(msort2(news1))#recursion for 1st half 
+            new_s.append(msort2(news2))#recursion for 2nd half
+            #print(Y1,Y2)
+            #y= new_s.append(msort2(news1,new2))
+    #print (new_s)
+            y=''.join(([str(item) for item in new_s]))
+    return y[0:n]
+def msort2(s1):#recursion function for ith half
+    n1=len(s1)
+    new_s1=[]
+    for i in range(n1):
+        if n1<3:
+            new_s1.append(s1[i])
+        else:
+            midpoint1=math.ceil(n1/2)
+            new_s1.append(s1[midpoint1-1])
+            news11=s1[0:midpoint1-1]
+            news22=s1[midpoint1:n1]
+            new_s1.append(msort2(news11))#recursion for 1st half of ith half
+            new_s1.append(msort2(news22))#recursion of 2nd half of ith half
+        new_s1=''.join(str(item) for item in new_s1)#convert back to string
+        return (new_s1)
+Z=(msort("abcdefg"))
+print(Z)
