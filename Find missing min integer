@@ -1,0 +1,19 @@
+def findmininteger(a):
+    n=len(a)
+    v=0
+    mi=min(a)
+    ma=max(a)
+    y=[]
+    print(mi,ma)
+    for i in range(n):
+        print("v=", v)
+        if v>0 and v not in a:
+            if v<mi:
+                y.append(v)
+            elif v>mi and v<ma:
+                y.append(v)
+            else:
+                y.append(ma+1)
+        v=v+i
+    return y
+print(findmininteger([1,2,4,5,6]))
