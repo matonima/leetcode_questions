@@ -1,0 +1,26 @@
+
+def solution(num):
+    n=len(num)
+    A=[0]*(n-2)#output array set to dynamic
+    for i in range(n):
+        a=num[i]
+        for j in range(i+1,n):
+            b=num[j]
+            for k in range(j+1,n):
+                c=num[k]
+                print(a,b,c)
+                if a<b and c<b:
+                    ans=1
+                    A[i]=(ans)
+                    print('zigzag found',a,b,c, 'ans=',ans,"A=",A)
+                elif a>b and c>b:
+                    ans=1
+                    A[i]=(ans)
+                    print('zigzag found',a,b,c, 'ans=',ans,"A=",A)
+                else:
+                    ans=0
+                    #A.append(ans)
+    return A
+#drive
+num=[1,2,1,3,4]
+solution(num)
