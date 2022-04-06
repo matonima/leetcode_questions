@@ -1,0 +1,25 @@
+def solution(a, b, k):
+    count=0
+    
+    print(k)
+    for i in range(len(a)):
+        m=a[i]
+        print('m=',m)
+        for j in range(len(b)):
+            n=b[(len(b)-1-j)]
+            print('n=',n)
+            if (m!=n and m==k[0] and n==k[1]):
+                count=count+1
+                print ('pair found', count)
+            elif (m!=n and m==k[1] and n==k[0]):
+                count=count+1
+                print ('pair found', count)
+    return count
+                
+
+#drive:
+a=[1, 2, 3]
+b=[1, 2, 3]
+k= 31
+k=[int(x) for x in str(k)]
+y=solution(a,b,k)
