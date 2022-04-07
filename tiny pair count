@@ -5,21 +5,19 @@ def solution(a,b,k):
     for i in range(len(a)):
         m=a[i]
         print('m=',m)
-        for j in range(len(b)):
-            n=b[(len(b)-1-j)]
-            print('n=',n)
-            conc=int(str(m)+str(n))
-            if conc<k:
-                y.append(conc)
-                count=count+1
-                print('tiny=',y, 'number', count)
-            else:
-                print('not tiny', conc)
-            return(y,count)
+        n=b[(len(b)-1-i)]
+        print('n=',n)
+        conc=int(str(m)+str(n))
+        if conc<k:
+            y.append(conc)
+            count=count+1
+            print('tiny=',y, 'number', count)
+        else:
+            print('not tiny', conc)
+        return(count)
 
 #drive:
 a=[1, 2, 3]
 b=[1, 2, 3]
 k= 31
-#k=[int(x) for x in str(k)]
 solution(a,b,k)
