@@ -1,0 +1,46 @@
+def is_valid_position(queens):
+    """
+    Check if the current configuration of queens is valid.
+    Queens are placed 2 columns and 1 row, or 2 rows and 1 column away from each other.
+    If any two queens are attacking each other, return False.
+    """
+    for i in range(len(queens)):
+        for j in range(i + 1, len(queens)):
+            if abs(queens[i] - queens[j]) in (0, 1, 2):
+                return False
+    return True
+
+def count_n_queens_solutions(n):
+    """
+    Count the number of possible positions to place n queens on an n x n chessboard.
+    Queens are placed 2 columns and 1 row, or 2 rows and 1 column away from each other.
+
+    :param n: The size of the chessboard and the number of queens to place.
+    :return: The number of possible positions to place n queens.
+    """
+    if n <= 1:
+        return n
+
+    # Initialize the queens with relative positions 2 columns and 1 row away from each other
+    queens = [2, 0]
+
+    possible_positions = 0
+    while True:
+        if is_valid_position(queens):
+            possible_positions += 1
+        
+        # Move each queen one step clockwise while maintaining relative positions
+        # If all the queens have their original relative positions, break the loop
+        for i in range(len(queens)):
+            queens[i] = (queens[i] + 1) % n
+            if queens[i] != 2:
+                break
+        else:
+            break
+
+    return possible_positions
+
+# Test the function
+n = 5
+result = count_n_queens_solutions(n)
+print(f"Number of possible positions for {n} queens: {result}")
